@@ -13,6 +13,6 @@ public abstract class Pozione extends Item{
 	}
 
 	
-	protected abstract void usaPozione(Personaggio player);
+	public abstract void usaPozione(Personaggio player);
 
 }

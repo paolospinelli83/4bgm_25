@@ -10,7 +10,7 @@ public class PozioneVita extends Pozione {
 	}
 	
 	@Override
-	protected void usaPozione(Personaggio player) {
+	public void usaPozione(Personaggio player) {
 		player.setVita(player.getVita()+potenza);
 	}
 
