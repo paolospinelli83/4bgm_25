@@ -14,9 +14,9 @@ public class Armatura extends Item {
 
 
 
-	public int difendi(int attacco, int difesa) {
-		difesa= attacco-difesa;
-		return difesa;
+	public int difendi(int attacco) {
+		int dannoRicevuto=  attacco-difesa;
+		return dannoRicevuto;
 	}
 
 

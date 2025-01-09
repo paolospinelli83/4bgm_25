@@ -1,10 +1,12 @@
 package giocatori;
 
+import items.Arma;
 import utility.Equipaggiamento;
 
 public class Personaggio {
 	protected String nome;
 	protected int livello;
+	protected int puntiEsperienza;
 	protected Equipaggiamento equip;
 	protected int vita;
 	protected int velocita;
@@ -56,5 +58,30 @@ public class Personaggio {
 	}
 	
 	
+	public int difendi(int danno) {
+		int dannoRicevuto = this.getEquip().getArmatura().difendi(danno);
+		this.setVita(vita - dannoRicevuto);
+		return dannoRicevuto;
+		
+	}
 	
+	public int attaccoLeggero(Personaggio avversario) {
+		Arma miaArma;
+		miaArma = this.equip.getArma();
+		int danno;
+		danno=miaArma.getDannoLeggero();
+		int dannoProvocato = avversario.difendi(danno);
+		
+		return dannoProvocato;		
+	}
+	
+	public int attaccoPesante(Personaggio avversario) {
+		Arma miaArma;
+		miaArma = this.equip.getArma();
+		int danno;
+		danno=miaArma.getDannoPesante();
+		int dannoProvocato = avversario.difendi(danno);
+		
+		return dannoProvocato;		
+	}
 }
