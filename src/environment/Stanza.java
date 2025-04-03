@@ -38,6 +38,56 @@ public class Stanza {
 				
 		return out;
 	}
+
+	public int getNumeroStanza() {
+		return numeroStanza;
+	}
+
+	public void setNumeroStanza(int numeroStanza) {
+		this.numeroStanza = numeroStanza;
+	}
+
+	public Mostro getMostro() {
+		return mostro;
+	}
+
+	public void setMostro(Mostro mostro) {
+		this.mostro = mostro;
+	}
+
+	public Giocatore getGiocatore() {
+		return giocatore;
+	}
+
+	public void setGiocatore(Giocatore giocatore) {
+		this.giocatore = giocatore;
+	}
+
+	public Item getTesoro() {
+		return tesoro;
+	}
+
+	public void setTesoro(Item tesoro) {
+		this.tesoro = tesoro;
+	}
+
+	public Pozione getTrappola() {
+		return trappola;
+	}
+
+	public void setTrappola(Pozione trappola) {
+		this.trappola = trappola;
+	}
+
+	public ArrayList<Stanza> getPorte() {
+		return porte;
+	}
+
+	public void setPorte(ArrayList<Stanza> porte) {
+		this.porte = porte;
+	}
+	
+	
 	
 	
 	
