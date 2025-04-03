@@ -1,44 +1,46 @@
 package avvio;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Random;
 
 import environment.Labirinto;
 import environment.Stanza;
 
 public class Avvio {
 
-	public static void main(String[] args) {
-		Stanza s1= new Stanza(1, null, null, null, null, new ArrayList<Stanza>());
+	public static void main(String[] args) throws IOException {
+		Stanza stanze[] = new Stanza[20];
 		
-		Stanza s2= new Stanza(2, null, null, null, null, new ArrayList<Stanza>());
+		stanze[0]= new Stanza(1, null, null, null, null, new ArrayList<Stanza>());
+				
+		Labirinto lab = new Labirinto(stanze[0], null);
 		
-		Stanza s3= new Stanza(3, null, null, null, null, new ArrayList<Stanza>());
+		for(int i=1; i<20; i++) {
+			stanze[i]= new Stanza(i+1, null, null, null, null, new ArrayList<Stanza>());					
+		}
 		
-		Stanza s4= new Stanza(4, null, null, null, null, new ArrayList<Stanza>());
-		
-		Labirinto lab = new Labirinto(s1, null);
-		 
-		ArrayList<Stanza> precedentiS2=new ArrayList<Stanza>();
-		precedentiS2.add(s1);
-		lab.addStanza(s2, precedentiS2);
-		
-		ArrayList<Stanza> precedentiS3=new ArrayList<Stanza>();
-		precedentiS3.add(s2);
-		//precedentiS3.add(s3);
-		lab.addStanza(s3, precedentiS3);
-		
-		ArrayList<Stanza> precedentiS4=new ArrayList<Stanza>();
-		precedentiS3.add(s1);
-		precedentiS3.add(s3);
-		lab.addStanza(s4, precedentiS4);
-		
-		lab.setFine(s4);
+		for(int i=0; i<19; i++) {
+			Random rand = new Random();
+			stanze[i].getPorte().add(stanze[Math.abs(rand.nextInt()%20)]);
+			stanze[i].getPorte().add(stanze[Math.abs(rand.nextInt()%20)]);
+			stanze[i].getPorte().add(stanze[Math.abs(rand.nextInt()%20)]);					
+		}		
+		lab.setFine(stanze[19]);
 		
 		Stanza stanzaCurr=lab.getInizio();
 		while(stanzaCurr.getNumeroStanza()!=lab.getFine().getNumeroStanza()) {
 			System.out.println(stanzaCurr.toString());
-			stanzaCurr=stanzaCurr.getPorte().get(0);
+			
+			System.out.println("INSERIRE IL NUMERO DELLA PORTA DA APRIRE (1, 2, 3)");
+			InputStreamReader reader = new InputStreamReader(System.in);
+			BufferedReader bReader = new BufferedReader(reader);
+			int numStanza=Integer.valueOf(bReader.readLine())-1;
+			stanzaCurr=stanzaCurr.getPorte().get(numStanza);
 		}
+		System.out.println(stanzaCurr.toString());
 	}
 
 }
