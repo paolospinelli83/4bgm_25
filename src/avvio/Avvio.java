@@ -27,7 +27,8 @@ public class Avvio {
 			stanze[i].getPorte().add(stanze[Math.abs(rand.nextInt()%20)]);
 			stanze[i].getPorte().add(stanze[Math.abs(rand.nextInt()%20)]);
 			stanze[i].getPorte().add(stanze[Math.abs(rand.nextInt()%20)]);					
-		}		
+		}	
+		
 		lab.setFine(stanze[19]);
 		
 		Stanza stanzaCurr=lab.getInizio();
